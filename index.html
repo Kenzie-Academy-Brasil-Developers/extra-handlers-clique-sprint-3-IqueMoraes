@@ -13,9 +13,13 @@
         <h1>An interactive web page</h1>
 
         <h2>1. Color changer</h2>
-        <button id="gray_button">Gray</button>
-        <button id="blue_button">Blue</button>
+                    <!--Inserida nova div--> <div id="caixa_de_botoes">
+                    <button id="gray_button">Gray</button>
+                    <button id="blue_button">Blue</button>
+                </div>
         <div id="color_box" class="gray"></div>        
+
+
         <script>
             const color_box = document.getElementById("color_box");
             
@@ -34,6 +38,18 @@
              *  Adicionar um botão e um event handler 
              *  e o botão torna o quadrado rosa.
              */
+            
+            const new_color_button = document.createElement('button');
+            new_color_button.innerText = 'Pink';
+            new_color_button.id = 'pink_button';
+
+            const caixa_de_botoes = document.querySelector('#caixa_de_botoes');
+            caixa_de_botoes.appendChild(new_color_button);
+
+            const pink_button = document.getElementById("pink_button");
+            pink_button.onclick = function () {
+                color_box.className = "pink"
+            }
         </script>
 
         <hr>
@@ -47,19 +63,24 @@
             
             const counter_button = document.getElementById("counter_button");
             counter_button.onclick = function() {
-                /* TODO 2
-                 *
-                 *  A função incrementa 1 em um contador "count", 
-                 *  atualiza o conteúdo de texto do "countspan" 
-                 *  e mostra o valor atual de "count".
-                 */
+                                /* TODO 2
+                                *
+                                *  A função incrementa 1 em um contador "count", 
+                                *  atualiza o conteúdo de texto do "countspan" 
+                                *  e mostra o valor atual de "count".
+                                */
+                count ++;
+                // console.log(count);
+                countspan.innerText = count;
             }
         </script>
 
         <hr>
-
+        <!-- criada seção--> <section id="par_impar">
         <h2>3. Even or Odd?</h2>
         <button id="even_or_odd_button">Is the count even or odd?</button>
+        </section>
+
         <script>
             const even_or_odd_button = document.getElementById("even_or_odd_button");
             even_or_odd_button.onclick = function() {
@@ -68,7 +89,26 @@
                  * A função mostra um "alert dialog" mostrando se o contador 
                  * (da segunda tarefa (TODO 2)) é par ou impar.
                  */
+                const paragrafo_resultado = document.createElement('p');
+                paragrafo_resultado.innerText = 'O número de cliques é ';
+
+                const nova_secao = document.querySelector("#par_impar"); 
+                if (count %2 ===0 ) {
+                        paragrafo_resultado.innerText += 'par.';
+                        nova_secao.appendChild(paragrafo_resultado);
+                        alert("O número de cliques é par.");
+
+                }
+                else {
+                    paragrafo_resultado.innerText += 'ímpar.';
+                    nova_secao.appendChild(paragrafo_resultado);
+                    alert("O número de cliques é ímpar.");
+
+
+                }
             }
         </script>
+
+        <!---->
     </body>
 </html>
